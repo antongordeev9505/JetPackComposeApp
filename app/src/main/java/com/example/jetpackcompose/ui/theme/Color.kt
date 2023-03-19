@@ -2,7 +2,28 @@ package com.example.jetpackcompose.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+data class Colors(
+    val primaryBackground: Color,
+    val secondaryBackground: Color,
+    val headerTextColor: Color,
+    val primaryTextColor: Color,
+    val primaryTextInvertColor: Color,
+    val hintTextColor: Color,
+    val primaryTintColor: Color,
+    val secondaryTintColor: Color,
+    val accentColor: Color,
+    val notificationColor: Color
+)
+
+val lightPaletteColors = Colors(
+    primaryBackground = Color.White,
+    secondaryBackground = Color(0xFFD0CCC7),
+    headerTextColor = Color(0xFF311F09),
+    primaryTextColor = Color(0xFF59442B),
+    primaryTextInvertColor = Color(0xFFFFFFFF),
+    primaryTintColor = Color(0xFFFF8A00),
+    secondaryTintColor = Color(0xFF3FA72F),
+    hintTextColor = Color(0xFFA0978C),
+    accentColor = Color(0xFF8AEAFF),
+    notificationColor = Color(0xFFFF3838)
+)
