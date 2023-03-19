@@ -3,4 +3,9 @@
     <string name="sign_in_title">Login</string>
     <string name="sign_up_title">Sign up</string>
     <string name="forgot_password_title">Forgot?</string>
+    <string name="sign_in_subtitle">Don\'t have an account?</string>
+    <string name="sign_up_subtitle">Do you have an account?</string>
+    <string name="forgot_password_subtitle">We\'re so sorry</string>
+    <string name="sign_in_action">Sign up</string>
+    <string name="sign_up_action">Sign in</string>
 </resources>

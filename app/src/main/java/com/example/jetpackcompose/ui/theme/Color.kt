@@ -12,7 +12,8 @@ data class Colors(
     val primaryTintColor: Color,
     val secondaryTintColor: Color,
     val accentColor: Color,
-    val notificationColor: Color
+    val notificationColor: Color,
+    val actionTextColor: Color
 )
 
 val lightPaletteColors = Colors(
@@ -25,5 +26,6 @@ val lightPaletteColors = Colors(
     secondaryTintColor = Color(0xFF3FA72F),
     hintTextColor = Color(0xFFA0978C),
     accentColor = Color(0xFF8AEAFF),
-    notificationColor = Color(0xFFFF3838)
+    notificationColor = Color(0xFFFF3838),
+    actionTextColor = Color(0xFF0094FF)
 )
