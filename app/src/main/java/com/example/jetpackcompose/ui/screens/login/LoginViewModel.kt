@@ -1,10 +1,9 @@
 package com.example.jetpackcompose.ui.screens.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.jetpackcompose.common.EventHandler
 import com.example.jetpackcompose.ui.screens.login.models.LoginEvent
+import com.example.jetpackcompose.ui.screens.login.models.LoginSubState
 import com.example.jetpackcompose.ui.screens.login.models.LoginViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,6 +17,22 @@ class LoginViewModel @Inject constructor() : ViewModel(), EventHandler<LoginEven
     val viewState: StateFlow<LoginViewState> = _viewState
 
     override fun obtainEvent(event: LoginEvent) {
-        TODO("Not yet implemented")
+        when (event) {
+            is LoginEvent.SignInClicked -> performSignIn()
+            is LoginEvent.SignUpClicked -> performSignUp()
+            is LoginEvent.EmailChanged -> emailChanged(event.value)
+        }
+    }
+
+    private fun emailChanged(value: String) {
+        _viewState.value = _viewState.value.copy(emailValue = value)
+    }
+
+    private fun performSignIn() {
+        _viewState.value = _viewState.value.copy(loginSubState = LoginSubState.SignIn)
+    }
+
+    private fun performSignUp() {
+        _viewState.value = _viewState.value.copy(loginSubState = LoginSubState.SignUp)
     }
 }

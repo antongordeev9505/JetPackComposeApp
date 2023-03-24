@@ -8,4 +8,5 @@
     <string name="forgot_password_subtitle">We\'re so sorry</string>
     <string name="sign_in_action">Sign up</string>
     <string name="sign_up_action">Sign in</string>
+    <string name="email_hint">Введите ваш email</string>
 </resources>

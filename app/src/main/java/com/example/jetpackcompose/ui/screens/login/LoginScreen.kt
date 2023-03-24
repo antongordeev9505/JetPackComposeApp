@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.ui.screens.login
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -15,7 +16,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcompose.R
+import com.example.jetpackcompose.ui.screens.login.models.LoginEvent
 import com.example.jetpackcompose.ui.screens.login.models.LoginSubState
+import com.example.jetpackcompose.ui.screens.login.views.ForgotPasswordView
+import com.example.jetpackcompose.ui.screens.login.views.SignInView
+import com.example.jetpackcompose.ui.screens.login.views.SignUpView
 import com.example.jetpackcompose.ui.theme.AppTheme
 
 @Composable
@@ -58,6 +63,13 @@ fun LoginScreen(loginViewModel: LoginViewModel) {
                     Spacer(modifier = Modifier.width(4.dp))
                     if (loginSubState != LoginSubState.ForgotPassword) {
                         Text(
+                            modifier = Modifier.clickable {
+                                when (loginSubState) {
+                                    LoginSubState.SignIn -> loginViewModel.obtainEvent(LoginEvent.SignUpClicked)
+                                    LoginSubState.SignUp -> loginViewModel.obtainEvent(LoginEvent.SignInClicked)
+                                    else -> Unit
+                                }
+                            },
                             text = when (loginSubState) {
                                 LoginSubState.SignIn -> stringResource(id = R.string.sign_in_action)
                                 LoginSubState.SignUp -> stringResource(id = R.string.sign_up_action)
@@ -69,6 +81,20 @@ fun LoginScreen(loginViewModel: LoginViewModel) {
                             )
                         )
                     }
+                }
+            }
+
+
+            item {
+                when (loginSubState) {
+                    LoginSubState.SignIn -> SignInView(
+                        viewState = this@with,
+                        onTextFieldChange = {
+                            loginViewModel.obtainEvent(LoginEvent.EmailChanged(it))
+                        }
+                    )
+                    LoginSubState.SignUp -> SignUpView()
+                    LoginSubState.ForgotPassword -> ForgotPasswordView()
                 }
             }
         }
