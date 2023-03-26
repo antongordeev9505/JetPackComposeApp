@@ -9,4 +9,8 @@
     <string name="sign_in_action">Sign up</string>
     <string name="sign_up_action">Sign in</string>
     <string name="email_hint">Введите ваш email</string>
+    <string name="password_hint">Пароль</string>
+    <string name="sign_in_forget">Зарегаца</string>
+    <string name="remember_check_title">Запомнить меня</string>
+    <string name="action_login">Что то</string>
 </resources>
