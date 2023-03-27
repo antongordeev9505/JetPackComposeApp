@@ -3,5 +3,6 @@ package com.example.jetpackcompose.navigation
 enum class NavigationTree {
     Splash,
     Login,
-    Main
+    Main,
+    Screen1,
 }

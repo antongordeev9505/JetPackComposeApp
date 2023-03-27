@@ -13,4 +13,5 @@
     <string name="sign_in_forget">Зарегаца</string>
     <string name="remember_check_title">Запомнить меня</string>
     <string name="action_login">Что то</string>
+    <string name="error_message">Ошибка загрузки</string>
 </resources>
