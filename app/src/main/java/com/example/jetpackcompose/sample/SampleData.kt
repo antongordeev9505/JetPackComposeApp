@@ -24,6 +24,41 @@ object SampleData {
                 description = "Description 4",
                 isDone = false
             ),
+            MyCard(
+                title = "Title 5",
+                description = "Description 5",
+                isDone = true
+            ),
+            MyCard(
+                title = "Title 6",
+                description = "Description 6",
+                isDone = false
+            ),
+            MyCard(
+                title = "Title 7",
+                description = "Description 7",
+                isDone = true
+            ),
+            MyCard(
+                title = "Title 8",
+                description = "Description 8",
+                isDone = false
+            ),
+            MyCard(
+                title = "Title 9",
+                description = "Description 9",
+                isDone = true
+            ),
+            MyCard(
+                title = "Title 10",
+                description = "Description 10",
+                isDone = false
+            ),
+            MyCard(
+                title = "Title 11",
+                description = "Description 11",
+                isDone = true
+            ),
         )
     }
 }

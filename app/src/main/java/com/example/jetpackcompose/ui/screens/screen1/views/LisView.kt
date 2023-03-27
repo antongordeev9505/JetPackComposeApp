@@ -12,7 +12,7 @@ import com.example.jetpackcompose.ui.components.CardComponent
 @Composable
 fun ListView(list: List<MyCard>) {
     LazyColumn(
-        contentPadding = PaddingValues(vertical = 16.dp, horizontal = 16.dp),
+        contentPadding = PaddingValues(vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(list) { card ->
