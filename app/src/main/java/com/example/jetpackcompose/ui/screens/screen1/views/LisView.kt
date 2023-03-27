@@ -10,18 +10,18 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.jetpackcompose.sample.MyCard
 import com.example.jetpackcompose.ui.components.CardComponent
+import com.example.jetpackcompose.ui.screens.screen1.models.Screen1ViewState
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ListView(list: List<MyCard>) {
+fun ListView(viewState: Screen1ViewState, onIconClickAction: (String) -> Unit) {
     LazyColumn(
         contentPadding = PaddingValues(vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        val groupedItems = list.groupBy { it.isDone }
-        groupedItems.forEach { isDone, cards ->
+        val groupedItems = viewState.list.groupBy { it.isDone }
+        groupedItems.forEach { (isDone, cards) ->
             stickyHeader {
                 Text(
                     text = if (isDone) {
@@ -32,8 +32,14 @@ fun ListView(list: List<MyCard>) {
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }
-            items(cards) { card ->
-                CardComponent(card)
+            items(cards, key = { it.title }) { card ->
+                CardComponent(
+                    item = card,
+                    mainModifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .animateItemPlacement(),
+                    onClickIconAction = onIconClickAction
+                )
             }
         }
     }

@@ -1,14 +1,18 @@
 package com.example.jetpackcompose.ui.screens.screen1
 
 import androidx.compose.runtime.Composable
-import com.example.jetpackcompose.sample.SampleData
-import com.example.jetpackcompose.ui.screens.screen1.views.ErrorView
+import androidx.compose.runtime.collectAsState
+import com.example.jetpackcompose.ui.screens.screen1.models.Screen1Event
 import com.example.jetpackcompose.ui.screens.screen1.views.ListView
 
 @Composable
-fun Screen1() {
-    val data = SampleData.getList()
+fun Screen1(viewModel: Screen1ViewModel) {
+
+    val viewState = viewModel.viewState.collectAsState()
+
 //    LoadingView()
 //    ErrorView()
-    ListView(data)
+    ListView(viewState.value) { title ->
+        viewModel.obtainEvent(Screen1Event.IconClicked(title))
+    }
 }

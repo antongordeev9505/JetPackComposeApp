@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -25,9 +26,13 @@ import com.example.jetpackcompose.R
 import com.example.jetpackcompose.sample.MyCard
 
 @Composable
-fun CardComponent(item: MyCard) {
+fun CardComponent(
+    item: MyCard,
+    mainModifier: Modifier = Modifier.padding(horizontal = 16.dp),
+    onClickIconAction: (String) -> Unit
+) {
     Card(
-        modifier = Modifier.padding(horizontal = 16.dp),
+        modifier = mainModifier,
         shape = RoundedCornerShape(16.dp)
     ) {
         Column(
@@ -51,7 +56,7 @@ fun CardComponent(item: MyCard) {
                         }
                     ),
                     contentDescription = null,
-                    modifier = Modifier.size(32.dp),
+                    modifier = Modifier.size(32.dp).clickable { onClickIconAction(item.title) },
                     tint = if (item.isDone) {
                         Color.Green
                     } else {

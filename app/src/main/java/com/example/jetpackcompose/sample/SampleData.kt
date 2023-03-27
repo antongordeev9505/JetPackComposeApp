@@ -1,6 +1,7 @@
 package com.example.jetpackcompose.sample
 
-data class MyCard(val title: String, val description: String, val isDone: Boolean)
+data class MyCard(val title: String, val description: String, var isDone: Boolean)
+
 object SampleData {
     fun getList(): List<MyCard> {
         return listOf(

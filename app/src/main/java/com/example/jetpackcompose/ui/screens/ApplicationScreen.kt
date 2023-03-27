@@ -9,6 +9,7 @@ import com.example.jetpackcompose.navigation.NavigationTree
 import com.example.jetpackcompose.ui.screens.login.LoginScreen
 import com.example.jetpackcompose.ui.screens.login.LoginViewModel
 import com.example.jetpackcompose.ui.screens.screen1.Screen1
+import com.example.jetpackcompose.ui.screens.screen1.Screen1ViewModel
 import com.example.jetpackcompose.ui.screens.splash.SplashScreen
 
 @Composable
@@ -20,6 +21,9 @@ fun ApplicationScreen() {
         composable(route = NavigationTree.Login.name) {
             val loginViewModel = hiltViewModel<LoginViewModel>()
             LoginScreen(loginViewModel = loginViewModel) }
-        composable(route = NavigationTree.Screen1.name) { Screen1() }
+        composable(route = NavigationTree.Screen1.name) {
+            val screen1ViewModel = hiltViewModel<Screen1ViewModel>()
+            Screen1(screen1ViewModel)
+        }
     }
 }
