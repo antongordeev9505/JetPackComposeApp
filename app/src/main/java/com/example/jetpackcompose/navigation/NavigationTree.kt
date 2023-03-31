@@ -5,4 +5,5 @@ enum class NavigationTree {
     Login,
     Main,
     Screen1,
+    Animation
 }
