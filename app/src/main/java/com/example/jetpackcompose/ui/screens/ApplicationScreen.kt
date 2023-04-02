@@ -7,6 +7,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
 import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcompose.navigation.NavigationTree
+import com.example.jetpackcompose.navigation.navigateToScreen2
+import com.example.jetpackcompose.navigation.navigationExampleScreen
+import com.example.jetpackcompose.navigation.navigationExampleScreen2
 import com.example.jetpackcompose.ui.screens.login.LoginScreen
 import com.example.jetpackcompose.ui.screens.login.LoginViewModel
 import com.example.jetpackcompose.ui.screens.screen1.AnimatedRopesScreen
@@ -39,16 +42,8 @@ fun ApplicationScreen() {
             AnimatedRopesScreen()
         }
 
-        composable(route = NavigationTree.NavigationExample.name) {
-            val viewModel = hiltViewModel<NavigationExampleScreenViewModel>()
-            NavigationExampleScreen(viewModel = viewModel, onButtonClick = {
-                navController.navigate(route = NavigationTree.NavigationExample2.name)
-            })
-        }
-
-        composable(route = NavigationTree.NavigationExample2.name) {
-            NavigationExampleScreen2()
-        }
+        navigationExampleScreen(onButtonClick = navController::navigateToScreen2)
+        navigationExampleScreen2()
 
         //dialogs
         dialog(route = "dialogDestination") {}

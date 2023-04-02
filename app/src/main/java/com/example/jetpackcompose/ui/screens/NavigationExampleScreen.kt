@@ -8,10 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun NavigationExampleScreen(
-    viewModel: NavigationExampleScreenViewModel,
+    viewModel: NavigationExampleScreenViewModel = hiltViewModel(),
     onButtonClick: () -> Unit
 ) {
     ButtonWithClick(onButtonClick = viewModel::onClickNavigationNext)
