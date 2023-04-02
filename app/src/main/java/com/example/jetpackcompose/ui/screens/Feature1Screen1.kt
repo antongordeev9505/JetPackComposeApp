@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun NavigationExampleScreen(
+fun Feature1Screen1(
     viewModel: NavigationExampleScreenViewModel = hiltViewModel(),
     onButtonClick: (firstArg: String, secondArg: String) -> Unit
 ) {
@@ -22,7 +22,7 @@ fun NavigationExampleScreen(
     LaunchedEffect(true) {
         viewModel.effects.collect {
             when (it) {
-                is NavigationExampleScreenEffect.NavigateNext -> onButtonClick(it.first, it.second)
+                is NavigationExampleScreenEffect.NavigateToFeature2 -> onButtonClick(it.first, it.second)
             }
         }
     }
