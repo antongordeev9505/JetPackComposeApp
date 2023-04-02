@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.dialog
+import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcompose.navigation.NavigationTree
 import com.example.jetpackcompose.ui.screens.login.LoginScreen
@@ -33,5 +35,17 @@ fun ApplicationScreen() {
         composable(route = NavigationTree.AnimatedRopes.name) {
             AnimatedRopesScreen()
         }
+
+        composable(route = NavigationTree.NavigationExample.name) {
+            NavigationExampleScreen(navController)
+        }
+
+        //dialogs
+        dialog(route = "dialogDestination") {}
+
+        //Construct a nested NavGraph
+//        navigation(route = "route", startDestination = "startDestination of nested graph") {
+//            composable(route = "route") {}
+//        }
     }
 }

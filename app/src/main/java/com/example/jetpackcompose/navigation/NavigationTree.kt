@@ -6,5 +6,6 @@ enum class NavigationTree {
     Main,
     Screen1,
     AnimationBasic,
-    AnimatedRopes
+    AnimatedRopes,
+    NavigationExample
 }
