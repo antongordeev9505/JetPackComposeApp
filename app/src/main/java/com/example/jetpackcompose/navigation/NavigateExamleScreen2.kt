@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.navigation
 
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
@@ -31,9 +32,20 @@ fun NavGraphBuilder.navigationExampleScreen2() {
         val first = navBackStackEntry.arguments?.getString(firstKey) ?: ""
         val second = navBackStackEntry.arguments?.getString(secondKey).orEmpty()
         NavigationExampleScreen2(firstArg = first, secondArg = second)
+
+        // get args from savedStateHandle
+//        val firstAlternative = navBackStackEntry.savedStateHandle.getLiveData<String>(firstKey).observeAsState().value
     }
 }
 
 fun NavController.navigateToScreen2(first: String, second: String) {
     navigate("$screen2Route/$first?second=$second")
+
+
+    //also we can use savedStateHandle for passing args
+//    navigate(screen2Route)
+//    currentBackStackEntry?.let {
+//        it.savedStateHandle[firstKey] = first
+//        it.savedStateHandle[secondKey] = second
+//    }
 }
