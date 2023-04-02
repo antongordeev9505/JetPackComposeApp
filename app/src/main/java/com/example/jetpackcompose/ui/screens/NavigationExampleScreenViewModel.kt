@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 sealed class NavigationExampleScreenEffect {
-    object NavigateNext : NavigationExampleScreenEffect()
+    data class NavigateNext(val first: String, val second: String) : NavigationExampleScreenEffect()
 }
 
 class NavigationExampleScreenViewModel : ViewModel() {
@@ -16,9 +16,9 @@ class NavigationExampleScreenViewModel : ViewModel() {
     private val _effects = Channel<NavigationExampleScreenEffect>()
     val effects: Flow<NavigationExampleScreenEffect> = _effects.receiveAsFlow()
 
-    fun onClickNavigationNext() {
+    fun onClickButton(first: String, second: String) {
         viewModelScope.launch {
-            _effects.send(NavigationExampleScreenEffect.NavigateNext)
+            _effects.send(NavigationExampleScreenEffect.NavigateNext(first, second))
         }
     }
 }

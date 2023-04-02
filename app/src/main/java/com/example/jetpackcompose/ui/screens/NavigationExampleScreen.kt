@@ -13,14 +13,16 @@ import androidx.hilt.navigation.compose.hiltViewModel
 @Composable
 fun NavigationExampleScreen(
     viewModel: NavigationExampleScreenViewModel = hiltViewModel(),
-    onButtonClick: () -> Unit
+    onButtonClick: (firstArg: String, secondArg: String) -> Unit
 ) {
-    ButtonWithClick(onButtonClick = viewModel::onClickNavigationNext)
+    ButtonWithClick(onButtonClick = { firstArg, secondArg ->
+        viewModel.onClickButton(firstArg, secondArg)
+    })
     
     LaunchedEffect(true) {
         viewModel.effects.collect {
             when (it) {
-                NavigationExampleScreenEffect.NavigateNext -> onButtonClick()
+                is NavigationExampleScreenEffect.NavigateNext -> onButtonClick(it.first, it.second)
             }
         }
     }
@@ -47,10 +49,10 @@ fun NavigationExampleScreen(
 }
 
 @Composable
-fun ButtonWithClick(onButtonClick: () -> Unit) {
+fun ButtonWithClick(onButtonClick: (firstArg: String, secondArg: String) -> Unit) {
     Column(modifier = Modifier.fillMaxSize()) {
         Text(text = "Screen1", modifier = Modifier.align(Alignment.CenterHorizontally))
-        Button(onClick = onButtonClick, modifier = Modifier.align(Alignment.CenterHorizontally)) {
+        Button(onClick = { onButtonClick("lolo", "pepe") }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
             Text(text = "Click to screen 2")
         }
     }
