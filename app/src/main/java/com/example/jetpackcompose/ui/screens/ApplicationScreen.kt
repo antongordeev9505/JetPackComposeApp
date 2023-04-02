@@ -5,7 +5,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
-import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcompose.navigation.NavigationTree
 import com.example.jetpackcompose.ui.screens.login.LoginScreen
@@ -20,11 +19,15 @@ import com.example.jetpackcompose.ui.screens.splash.SplashScreen
 fun ApplicationScreen() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = NavigationTree.AnimatedRopes.name) {
+    NavHost(
+        navController = navController,
+        startDestination = NavigationTree.NavigationExample.name
+    ) {
         composable(route = NavigationTree.Splash.name, content = { SplashScreen(navController) })
         composable(route = NavigationTree.Login.name) {
             val loginViewModel = hiltViewModel<LoginViewModel>()
-            LoginScreen(loginViewModel = loginViewModel) }
+            LoginScreen(loginViewModel = loginViewModel)
+        }
         composable(route = NavigationTree.Screen1.name) {
             val screen1ViewModel = hiltViewModel<Screen1ViewModel>()
             Screen1(screen1ViewModel)
@@ -37,7 +40,14 @@ fun ApplicationScreen() {
         }
 
         composable(route = NavigationTree.NavigationExample.name) {
-            NavigationExampleScreen(navController)
+            val viewModel = hiltViewModel<NavigationExampleScreenViewModel>()
+            NavigationExampleScreen(viewModel = viewModel, onButtonClick = {
+                navController.navigate(route = NavigationTree.NavigationExample2.name)
+            })
+        }
+
+        composable(route = NavigationTree.NavigationExample2.name) {
+            NavigationExampleScreen2()
         }
 
         //dialogs
