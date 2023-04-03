@@ -2,6 +2,7 @@ package com.example.jetpackcompose.navigation
 
 import android.net.Uri
 import androidx.navigation.NavController
+import androidx.navigation.NavDeepLink
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
@@ -15,6 +16,8 @@ private const val secondKey = "second"
 private const val screen2Route = "NavigationExample2"
 private const val screen2RouteWithArgs: String = "$screen2Route/{$firstKey}?second={$secondKey}"
 private const val feature2RouteWithArgs: String = "feature2/{$firstKey}?second={$secondKey}"
+private const val DEEPLINK_SCHEME = "composeapp"
+private const val BASE_ROUTE_SCREEN_2 = "Feature2Screen2"
 //second is secondary arg
 //first is primary arg
 
@@ -31,6 +34,7 @@ fun NavGraphBuilder.navigationFeature2() {
                 defaultValue = null
             }
         ),
+        deepLinks = listOf(NavDeepLink("$DEEPLINK_SCHEME://feature2/{$firstKey}")),
         startDestination = NavigationTree.Feature2Screen1.name
     ) {
         composable(route = NavigationTree.Feature2Screen1.name) { navBackStackEntry ->
